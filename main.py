@@ -1,4 +1,5 @@
 from flask import Flask, render_template, url_for, flash, redirect
+from forms import RegistrationForm, LoginForm
 
 
 app = Flask(__name__)
@@ -6,9 +7,13 @@ building_id = -1
 
 
 @app.route("/")
-@app.route("/home") 
+@app.route("/home")
 def home():
-    return render_template("home.html")
+    form = LoginForm()
+    if form.validate_on_submit():
+        flash(f"Login successful for {form.email.data}!", "success")
+        return redirect(url_for("home"))
+    return render_template("base.html", username="User", signedIn=False)
 
 
 @app.route("/sign-up")
