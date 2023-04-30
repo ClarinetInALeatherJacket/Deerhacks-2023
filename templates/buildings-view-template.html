@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title%}
+    Buildings
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        {% for building in buildings %}
+
+            <div class="card mx-4 my-4 text-white bg-secondary" style="width: 300px">
+                <img class="card-img-top" src="..."  alt="Card Image Top" style="width: 300px; height: 160px;">
+                <div class="card-body">
+                    <h4 class="card-title"> {{ building.name }} </h4>
+                    <h6 class="card-title"> {{ building.address }} </h6>
+                    <p class="card-text">{{ building.description }}</p>
+                    {% block button %} {% endblock %}
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
+
+{% endblock %} 
