@@ -1,0 +1,5 @@
+{% extends 'buildings-view-template.html' %}
+
+{% block button %}
+    <a href="{{ url_for('building-manage', building = building) }}" class="btn btn-danger">Manage Now</a>
+{% endblock %}

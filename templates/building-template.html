@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title%}
+    {{ building.name }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col mt-5">
+                <div class="float-right">
+                    <img src="{{ building.image }}" alt="Image of the building" style="width: 300px; height: 300px;">
+                </div>
+            </div>
+
+            <div class="col mt-5">
+
+                <div class="card mt-5 text-white bg-secondary" style="width: 300px">
+                    <div class="card-body">
+                        <h4 class="card-title"> {{ building.name }} </h4>
+                        <h6 class="card-title"> {{ building.address }} </h6>
+                        <p class="card-text">{{ building.description }}</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col"></div>
+
+        </div>
+
+        <div class="row">
+
+            {% block interactive %} {% endblock %}
+
+        </div>
+
+    </div>
+
+{% endblock %}
