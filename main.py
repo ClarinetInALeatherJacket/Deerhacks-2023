@@ -284,6 +284,7 @@ buildings = [
     }]
 
 
+guests = [ {"name": "Bobby Fischer", "license": "123456789", "duration": "24", "phone": "416-614-4114", "email": "ruh-roh@goofball.com"}, {"name": "Ubuntu", "email": "duh-doh@boofgall.com"} ]
 
 @app.route("/buildings-view")
 def building():
