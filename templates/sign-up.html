@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}
+Sign Up
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form method="POST">
+        <h3 align="center">Sign Up</h3>
+        <div class="form-group">
+          <label for="email">Email Address*</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="Enter email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="name">Name*</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            placeholder="Enter Name Here"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password1">Password*</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password1"
+            name="password1"
+            placeholder="Enter password"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password2">Password (Confirmation)*</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password2"
+            name="password2"
+            placeholder="Confirm password"
+          />
+        </div>
+        <div class="form-group">
+        <label for="license_plate">License Plate*</label>
+        <input
+            type="password"
+            class="form-control"
+            id="license_plate"
+            name="license_plate"
+            placeholder="Enter License Plate"
+        />
+        </div>
+        <div class="form-group">
+        <label for="phonenumer">Phone Number</label>
+        <input
+            type="password"
+            class="form-control"
+            id="phonenumber"
+            name="phonenumber"
+            placeholder="Enter Phone number"
+        />
+        </div>
+        <div class="form-group">
+        <label for="building">Building</label>
+        <label for="exampleFormControlFile2">Choose Building</label>
+
+        <select name="building" method="GET" action="/">
+        <option value="{{ buildings[0] }}" selected>{{ buildings[0] }}</option>
+        {% for building in buildings[1:] %}
+            <option value="{{ building }}">{{ building }}</option>
+        {% endfor %}
+        </select>
+        </div>
+        <br />
+        <div class="form-group">
+        <label for="unit_number">Unit Number</label>
+        <input
+            type="password"
+            class="form-control"
+            id="unit_number"
+            name="unit_number"
+            placeholder="Confirm password"
+        />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+{% endblock %}
