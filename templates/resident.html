@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+</html>
+{% extends "base.html" %}
+
+{% block title%}
+    Resident
+{% endblock %}
+
+{% block content %} 
+
+    <h2 style="color: white; padding: 10px"> Hello, {{ name }} </h2>
+    <h6 style="color: white; padding: 10px"> Home address: {{ address }} </h6>
+    <h6 style="color: white; padding: 10px"> Unit Number: {{ unit }} </h6>
+
+    {% if hasGuest == false %}
+
+        <h5 style="color: white; padding: 10px"> You currently have no incoming visitors </h5>
+
+    {% else %}
+
+        <h5 style="color: white; padding: 10px"> Incoming visitors: </h5> 
+
+        {% for guest in guests %} 
+
+            <div class="card mx-3 my-3 text-white bg-secondary">
+                <div class="card-body">
+                    <h5 class="card-title">{{ guest.name }}</h5>
+                    <p class="card-text">License plate: {{ guest.license }} </p>
+                    <p class="card-text"> Duration of stay: {{ guest.duration }} hours</p>
+                    <p class="card-text"> Email: {{ guest.email }} </p> 
+                    {% if guest.phone %}
+                        <p class="card-text"> Phone Number: {{ guest.phone }} </p>
+                    {% endif %} 
+                </div>
+            </div>
+
+        {% endfor %} 
+
+    {% endif %}
+
+{% endblock %}

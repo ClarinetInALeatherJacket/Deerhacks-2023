@@ -1,79 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script src='home.js'></script>
-    <link 
-        rel="stylesheet" 
-        href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
-        crossorigin="anonymous"
-    >
-	<link 
-        rel="shortcut icon" 
-        href="{{ url_for('static', filename='favicon.ico') }}"
-    >
-    <title>{% block title %} Parking Services {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>{% block title %} {% endblock %}</title>
 </head>
 
-<body>
+<body style="background-color: darkred;">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <button 
-            class="navbar-toggler" 
-            type="button" 
-            data-toggle="collapse" 
-            data-target="#navbar"
-        >
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbar">
             <div class="navbar-nav">
                 <img src="..." alt="..." class="img-thumbnail" id="logo">
-                <a class="nav-item nav-link" id="home" href="/">Home</a>
+                <a class="nav-item nav-link" id="home" href="/">Home</a> 
                 {% block navbar %}{% endblock %}
-                <a class="nav-item nav-link" id="usernmae" href="/">{{ username }}</a>
+                <a class="nav-item nav-link" id="username" href="/">{{ username }}</a> 
+                {% block navbarExtra %} {% endblock %}
             </div>
         </div>
     </nav>
-    {% for message in messages %}
+    {% for message in messages %} {% endfor %} 
 
-    {% endfor %}
-
-    {% if signedIn == false %}
-        <form method="POST">
-            <h3>Sign In</h3>
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input
-                    type="email"
-                    class="form-control"
-                    id="email"
-                    name="email"
-                    placeholder="Enter Email"
-                />
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input
-                    type="password"
-                    class="form-control"
-                    id="password"
-                    name="password"
-                    placeholder="Enter Password"
-                />
-            </div>
-        </form>
-        <button type="submit" class="btn btn-primary">Sign In</button>
-    {% else %}
-        <a class="nav-item nav-link" id="accountSettings" href="/account-settings">Account Settings</a>
-    {% endif %}
-    
-    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js%22%3E"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
+    {% block content %}{% endblock %} 
     {% block scripts %}{% endblock %}
 </body>
 
