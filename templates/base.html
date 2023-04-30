@@ -21,21 +21,34 @@
                 <img src="..." alt="..." class="img-thumbnail" id="logo">
                 <a class="nav-item nav-link" id="home" href="/">Home</a> 
                 {% block navbar %}{% endblock %}
+                <a class="nav-item nav-link" id="username" href="/">{{ username }}</a> 
                 {% block navbarExtra %} {% endblock %}
             </div>
         </div>
-        <div class="collapse navbar-collapse" id="navbar">
-            <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link" id="username" href="/"> Username{{ username }}</a>
-            </div>
-        </div>
     </nav>
-    {% for message in messages %} {% endfor %} 
+    {% with messages = get_flashed_messages(with_categories=true) %} 
+        {% for category, message in messages %} 
+            {% if category =='error' %}
+                <div class="alert alert-danger alter-dismissable fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+            {% else %}
+                <div class="alert alert-success alter-dismissable fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+            {% endif %} 
+        {% endfor %} 
+    {% endwith %}
 
-    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js%22%3E"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     {% block content %}{% endblock %} 
     {% block scripts %}{% endblock %}
 </body>
 
-</html>
