@@ -1,18 +1,53 @@
-<!DOCTYPE html>
-<html lang='en'>
 
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='home.css'>
-    <script src='home.js'></script>
-    <h1>Home Page</h1>
-</head>
+{% extends "base.html" %}
 
-<body>
-    <h1>Home Page</h1>
-</body>
+{% block title%}
+    Home
+{% endblock %}
 
-</html>
+{% block content %}
+<div class="container">
+    <div class="row align-items-start">
+      <div class="col">
+      </div>
+      <div class="col">
+        <br><br><br><br><br><br>
+      </div>
+      <div class="col">
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card mx-3 my-1 text-white bg-secondary" style="width: 300px">
+            <img class="card-img-top" src="../static/images/visitors-parking.jpg"  alt="Card Image Top" style="width: 300px; height: 300px;">
+            <div class="card-body">
+                <h5 class="card-title">Visitors</h5>
+                <p class="card-text">Reserve a parking spot to visit someone.</p>
+                <a href="#" class="btn btn-danger">Visitor Page</a>
+            </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mx-3 my-1 text-white bg-secondary" style="width: 300px">
+            <img src="../static/images/resident.png" class="card-img-top" alt="Card Image Top" style="width: 300px; height: 300px;">
+            <div class="card-body">
+                <h5 class="card-title">Residents</h5>
+                <p class="card-text">Manage your parking spot and visitors.</p>
+                <a href="#" class="btn btn-danger">Resident Page</a>
+            </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mx-3 my-1 text-white bg-secondary" style="width: 300px">
+            <img src="../static/images/manager.png" class="card-img-top" alt="Card Image Top" style="width: 300px; height: 300px;">
+            <div class="card-body">
+                <h5 class="card-title">Managers</h5>
+                <p class="card-text">Manage your residents, buildings, and parking.</p>
+                <a href="#" class="btn btn-danger">Manager Page</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
