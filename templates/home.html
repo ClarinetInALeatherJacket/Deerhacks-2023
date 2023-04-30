@@ -24,7 +24,7 @@
             <div class="card-body">
                 <h5 class="card-title">Visitors</h5>
                 <p class="card-text">Reserve a parking spot to visit someone.</p>
-                <a href="#" class="btn btn-danger">Visitor Page</a>
+                <a href="{{ url_for('buildingsViewVisitor', buildings=buildings) }}" class="btn btn-danger">Visitor Page</a>
             </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
             <div class="card-body">
                 <h5 class="card-title">Residents</h5>
                 <p class="card-text">Manage your parking spot and visitors.</p>
-                <a href="#" class="btn btn-danger">Resident Page</a>
+                <a href="{{ url_for('residentView') }}" class="btn btn-danger">Resident Page</a>
             </div>
         </div>
       </div>
@@ -44,7 +44,7 @@
             <div class="card-body">
                 <h5 class="card-title">Managers</h5>
                 <p class="card-text">Manage your residents, buildings, and parking.</p>
-                <a href="#" class="btn btn-danger">Manager Page</a>
+                <a href="{{ url_for('buildingsViewManager', buildings=buildings) }}" class="btn btn-danger">Manager Page</a>
             </div>
         </div>
       </div>
