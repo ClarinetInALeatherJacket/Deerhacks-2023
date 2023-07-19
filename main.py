@@ -97,122 +97,123 @@ buildings = [
         "Parking": 5,
     },
     {
-        "id": 5,
-        "name": "Building 5",
-        "address": "Address 5",
-        "manager": "Manager 5",
-        "description": "Description 5",
-        "image": "Image 5",
-        "Parking": 5,
-    },
-    {
-        "id": 5,
-        "name": "Building 5",
-        "address": "Address 5",
-        "manager": "Manager 5",
-        "description": "Description 5",
-        "image": "Image 5",
-        "Parking": 5,
-    },
-    {
-        "id": 5,
-        "name": "Building 5",
-        "address": "Address 5",
-        "manager": "Manager 5",
-        "description": "Description 5",
-        "image": "Image 5",
-        "Parking": 5,
-    },
-    {
-        "id": 5,
-        "name": "Building 5",
-        "address": "Address 5",
-        "manager": "Manager 5",
-        "description": "Description 5",
-        "image": "Image 5",
-        "Parking": 5,
-    },
-    {
-        "id": 5,
-        "name": "Building 5",
-        "address": "Address 5",
-        "manager": "Manager 5",
-        "description": "Description 5",
-        "image": "Image 5",
-        "Parking": 5,
-    },
-    {
-        "id": 5,
-        "name": "Building 5",
-        "address": "Address 5",
-        "manager": "Manager 5",
-        "description": "Description 5",
-        "image": "Image 5",
-        "Parking": 5,
-    },
-    {
-        "id": 5,
-        "name": "Building 5",
-        "address": "Address 5",
-        "manager": "Manager 5",
-        "description": "Description 5",
-        "image": "Image 5",
-        "Parking": 5,
-    },
-    {
-        "id": 5,
-        "name": "Building 5",
-        "address": "Address 5",
-        "manager": "Manager 5",
-        "description": "Description 5",
-        "image": "Image 5",
-        "Parking": 5,
-    },
-    {
-        "id": 5,
-        "name": "Building 5",
-        "address": "Address 5",
-        "manager": "Manager 5",
-        "description": "Description 5",
-        "image": "Image 5",
-        "Parking": 5,
-    },
-    {
-        "id": 5,
-        "name": "Building 5",
-        "address": "Address 5",
-        "manager": "Manager 5",
-        "description": "Description 5",
-        "image": "Image 5",
-        "Parking": 5,
-    },
-    {
-        "id": 5,
-        "name": "Building 5",
-        "address": "Address 5",
-        "manager": "Manager 5",
-        "description": "Description 5",
-        "image": "Image 5",
-        "Parking": 5,
-    },
-    {
-        "id": 5,
-        "name": "Building 5",
-        "address": "Address 5",
-        "manager": "Manager 5",
-        "description": "Description 5",
-        "image": "Image 5",
-        "Parking": 5,
-    },
-    {
-        "id": 5,
-        "name": "Building 5",
-        "address": "Address 5",
-        "manager": "Manager 5",
-        "description": "Description 5",
-        "image": "Image 5",
-        "Parking": 5,
-    }]
+        "id": 6,
+        "name": "Building 6",
+        "address": "Address 6",
+        "manager": "Manager 6",
+        "description": "Description 6",
+        "image": "Image 6",
+        "Parking": 6,
+    }
+    # ,{
+    #     "id": 5,
+    #     "name": "Building 5",
+    #     "address": "Address 5",
+    #     "manager": "Manager 5",
+    #     "description": "Description 5",
+    #     "image": "Image 5",
+    #     "Parking": 5,
+    # },
+    # {
+    #     "id": 5,
+    #     "name": "Building 5",
+    #     "address": "Address 5",
+    #     "manager": "Manager 5",
+    #     "description": "Description 5",
+    #     "image": "Image 5",
+    #     "Parking": 5,
+    # },
+    # {
+    #     "id": 5,
+    #     "name": "Building 5",
+    #     "address": "Address 5",
+    #     "manager": "Manager 5",
+    #     "description": "Description 5",
+    #     "image": "Image 5",
+    #     "Parking": 5,
+    # },
+    # {
+    #     "id": 5,
+    #     "name": "Building 5",
+    #     "address": "Address 5",
+    #     "manager": "Manager 5",
+    #     "description": "Description 5",
+    #     "image": "Image 5",
+    #     "Parking": 5,
+    # },
+    # {
+    #     "id": 5,
+    #     "name": "Building 5",
+    #     "address": "Address 5",
+    #     "manager": "Manager 5",
+    #     "description": "Description 5",
+    #     "image": "Image 5",
+    #     "Parking": 5,
+    # },
+    # {
+    #     "id": 5,
+    #     "name": "Building 5",
+    #     "address": "Address 5",
+    #     "manager": "Manager 5",
+    #     "description": "Description 5",
+    #     "image": "Image 5",
+    #     "Parking": 5,
+    # },
+    # {
+    #     "id": 5,
+    #     "name": "Building 5",
+    #     "address": "Address 5",
+    #     "manager": "Manager 5",
+    #     "description": "Description 5",
+    #     "image": "Image 5",
+    #     "Parking": 5,
+    # },
+    # {
+    #     "id": 5,
+    #     "name": "Building 5",
+    #     "address": "Address 5",
+    #     "manager": "Manager 5",
+    #     "description": "Description 5",
+    #     "image": "Image 5",
+    #     "Parking": 5,
+    # },
+    # {
+    #     "id": 5,
+    #     "name": "Building 5",
+    #     "address": "Address 5",
+    #     "manager": "Manager 5",
+    #     "description": "Description 5",
+    #     "image": "Image 5",
+    #     "Parking": 5,
+    # },
+    # {
+    #     "id": 5,
+    #     "name": "Building 5",
+    #     "address": "Address 5",
+    #     "manager": "Manager 5",
+    #     "description": "Description 5",
+    #     "image": "Image 5",
+    #     "Parking": 5,
+    # },
+    # {
+    #     "id": 5,
+    #     "name": "Building 5",
+    #     "address": "Address 5",
+    #     "manager": "Manager 5",
+    #     "description": "Description 5",
+    #     "image": "Image 5",
+    #     "Parking": 5,
+    # },
+    # {
+    #     "id": 5,
+    #     "name": "Building 5",
+    #     "address": "Address 5",
+    #     "manager": "Manager 5",
+    #     "description": "Description 5",
+    #     "image": "Image 5",
+    #     "Parking": 5,
+    # }
+    ]
 
 @app.route("/", methods=["GET", "POST"])
 @app.route("/home", methods=["GET", "POST"])
@@ -280,7 +281,18 @@ def signup():
 
 
 
-guests = [ {"name": "Bobby Fischer", "license": "123456789", "duration": "24", "phone": "416-614-4114", "email": "ruh-roh@goofball.com"}, {"name": "Ubuntu", "email": "duh-doh@boofgall.com"} ]
+guests = [ {
+                "name": "Bobby Fischer", 
+                "license": "123456789", 
+                "duration": "24", 
+                "phone": "416-614-4114", 
+                "email": "ruh-roh@goofball.com"
+            }, 
+            {  
+                "name": "Ubuntu", 
+                "email": "duh-doh@boofgall.com"
+            } 
+        ]
 
 @app.route("/buildings-view-visitor")
 def buildingsViewVisitor():
@@ -292,11 +304,11 @@ def buildingsViewManager():
 
 building = {}
 
-#can't seem to pass in a building via the button in buildings-view-visitors.html or the manager version, need to find a workaround
+# can't seem to pass in a building via the button in buildings-view-visitors.html or the manager version, need to find a workaround
 
 @app.route(f"/visit-building")
 def visitBuilding():
-    return render_template("visit-building.html", building_id = building.id)
+    return render_template("visit-building.html", building = building)
 
 @app.route("/manage-building")
 def manageBuilding():
@@ -306,6 +318,7 @@ name = "Bobby Fischer"
 address = "1234 56th street, Mississauga"
 unit = "123"
 hasGuest = True
+
 @app.route("/residentView")
 def residentView():
     return render_template("resident.html", guests=guests, name=name, address=address, unit=unit, hasGuest=hasGuest)
