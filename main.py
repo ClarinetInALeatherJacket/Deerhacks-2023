@@ -4,6 +4,7 @@ from os import path
 from sqlalchemy.sql import func
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
+from forms import RegistrationForm, LoginForm
 
 
 app = Flask(__name__)
@@ -220,58 +221,78 @@ buildings = [
 def home():
     return render_template("home.html", buildings=buildings)
 
-@app.route("/sign-in", methods=["GET", "POST"])
-def signin():
-    print(request.method)
-    user = ""
-    if request.method == 'POST':
-        email = request.form.get("email")
-        user = email
-        if email == "":
-            flash("Failled to login, invalid email", category="error")
+""" forms according to flask tutorials """
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}!', 'success')
+        return redirect(url_for('home'))
+    return render_template('register.html', title='Register', form=form)
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        if form.email.data == "admin@blog.com" and form.password.data == "password":
+            flash("You have been logged in!", "success")
+            return redirect(url_for("home"))
         else:
-            flash(f"Login successful for {email}!", category="success")
-    return render_template("sign-in.html", username=user , signedIn=False)
+            flash("Login unsuccessful. Please check username and password", "error")
+    return render_template('login.html', title='Login', form=form)
+
+# @app.route("/sign-in", methods=["GET", "POST"])
+# def signin():
+#     print(request.method)
+#     user = ""
+#     if request.method == 'POST':
+#         email = request.form.get("email")
+#         user = email
+#         if email == "":
+#             flash("Failled to login, invalid email", category="error")
+#         else:
+#             flash(f"Login successful for {email}!", category="success")
+#     return render_template("sign-in.html", username=user , signedIn=False)
 
 
-@app.route("/sign-up", methods=["GET", "POST"])
-def signup():
-    print(request.method)
-    user = ""
-    errors = False
-    if request.method == 'POST':
-        email = request.form.get("email")
-        name = request.form.get("name")
-        password1 = request.form.get("password1")
-        password2 = request.form.get("password2")
-        phonenumber = request.form.get("phonenumber")
-        unit_number = request.form.get("unit_number")
-        building = request.form.get("building")
+# @app.route("/sign-up", methods=["GET", "POST"])
+# def signup():
+#     print(request.method)
+#     user = ""
+#     errors = False
+#     if request.method == 'POST':
+#         email = request.form.get("email")
+#         name = request.form.get("name")
+#         password1 = request.form.get("password1")
+#         password2 = request.form.get("password2")
+#         phonenumber = request.form.get("phonenumber")
+#         unit_number = request.form.get("unit_number")
+#         building = request.form.get("building")
 
-        if email is None or len(email) < 4:
-            errors = True
-            flash("Email must be greater than 3 characters.", category="error")
-        if name is None or len(name) < 2:
-            errors = True
-            flash("First name must be greater than 1 characters.", category="error")
-        if password1 is None or password2 is None or password1 != password2:
-            errors = True
-            flash("Passwords do not match.", category="error")
-        if password1 is None or len(password1) < 8:
-            errors = True
-            flash("Password must be atleast 8 charcaters.", category="error")
-        if phonenumber != "" and len(phonenumber) < 10:
-            errors = True
-            flash("Phonenumber must be atleast 10 numbers(no spaces or - inbetween numbers).", category="error")
-        if errors == False:
-            flash(f"Sign Pp and Login successful for {email}!", "success")
-            # new_user = User(name=name, password=generate_password_hash(password1, method='sha256'), phonenumber=phonenumber, email=email, unit_number=unit_number, building=building)
-            # login_user(new_user, remember=True)
-            # flash('Account created!', category='success')
-            # db.session.add(new_user)
-            # db.session.commit()
+#         if email is None or len(email) < 4:
+#             errors = True
+#             flash("Email must be greater than 3 characters.", category="error")
+#         if name is None or len(name) < 2:
+#             errors = True
+#             flash("First name must be greater than 1 characters.", category="error")
+#         if password1 is None or password2 is None or password1 != password2:
+#             errors = True
+#             flash("Passwords do not match.", category="error")
+#         if password1 is None or len(password1) < 8:
+#             errors = True
+#             flash("Password must be atleast 8 charcaters.", category="error")
+#         if phonenumber != "" and len(phonenumber) < 10:
+#             errors = True
+#             flash("Phonenumber must be atleast 10 numbers(no spaces or - inbetween numbers).", category="error")
+#         if errors == False:
+#             flash(f"Sign Pp and Login successful for {email}!", "success")
+#             # new_user = User(name=name, password=generate_password_hash(password1, method='sha256'), phonenumber=phonenumber, email=email, unit_number=unit_number, building=building)
+#             # login_user(new_user, remember=True)
+#             # flash('Account created!', category='success')
+#             # db.session.add(new_user)
+#             # db.session.commit()
 
-    return render_template("sign-up.html", username=user , signedIn=False, buildings=["2120 Burnamthorpe street, Mississauga", "2675 Hurontario street, Mississauga", "345 Backside street, Mississauga", "609 Ambush cresent, Mississauga"])
+#     return render_template("sign-up.html", username=user , signedIn=False, buildings=["2120 Burnamthorpe street, Mississauga", "2675 Hurontario street, Mississauga", "345 Backside street, Mississauga", "609 Ambush cresent, Mississauga"])
 
 
 # @app.route("/sign-up")
