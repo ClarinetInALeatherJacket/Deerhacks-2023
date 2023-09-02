@@ -7,11 +7,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from forms import RegistrationForm, LoginForm
 
 
+db = SQLAlchemy()
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'insert good password here'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///parkings.db'
-db = SQLAlchemy()
+
 db.init_app(app)
+
 # db.init_app(app)
 building_id = -1
 
@@ -24,12 +27,15 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(50), unique=False, nullable=False)
     email = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(150), nullable=False)
-    phonenumber = db.Column(db.String(12), unique=True, nullable=True)
-    license_plate = db.Column(db.String(8), unique=True, nullable=True)
-    unit_number = db.Column(db.String(10), nullable=True)
-    building = db.Column(db.Integer, nullable=True)
-    manage_buildings = db.relationship('Building')
-    bookings = db.relationship('Bookings')
+    # phonenumber = db.Column(db.String(12), unique=True, nullable=True)
+    # license_plate = db.Column(db.String(8), unique=True, nullable=True)
+    # unit_number = db.Column(db.String(10), nullable=True)
+    # building = db.Column(db.Integer, nullable=True)
+    # manage_buildings = db.relationship('Building')
+    # bookings = db.relationship('Bookings', backref='author', lazy=True)
+    
+    def __repr__(self):
+        return f"User('{self.name}', '{self.email}', '{self.password}', '{self.id}')"
 
     # def __init__(name: str, email: str, password: str, phonenumber: str,
     #              license_plate: str, unit_number: str):
@@ -38,7 +44,7 @@ class User(db.Model, UserMixin):
 class Building(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     address = db.Column(db.String(150), unique=True, nullable=False)
-    manager_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    # manager_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     description = db.Column(db.Text(1000), nullable=True)
     bookings = db.relationship('Bookings')
 
@@ -48,9 +54,9 @@ class Bookings(db.Model):
     time = db.Column(db.DateTime, nullable=False, default=func.now())
     duration = db.Column(db.Integer, nullable=False)
     visitor_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    resident_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    # resident_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
-
+""" dummy data for buildings """
 buildings = [
     {
         "id": 1,
@@ -226,6 +232,15 @@ def home():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
+        #TODO:implement unique email
+        # User added to database
+        new_user = User(name=form.username.data, email=form.email.data, password=form.password.data)
+        
+        with app.app_context():
+            db.session.add(new_user)
+            db.session.commit()
+            print(User.query.all())
+        
         flash(f'Account created for {form.username.data}!', 'success')
         return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
@@ -234,7 +249,13 @@ def register():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        if form.email.data == "admin@blog.com" and form.password.data == "password":
+        
+        with app.app_context():
+            
+            # query database
+            users = db.session.query(User).filter(User.email.like(form.email.data)).all()
+        
+        if users is not None and len(users) == 1 and users[0].password == form.password.data:
             flash("You have been logged in!", "success")
             return redirect(url_for("home"))
         else:
@@ -299,9 +320,7 @@ def login():
 # def signup():
 #     return render_template("sign-up.html")
 
-
-
-
+""" dummy data for guests """
 guests = [ {
                 "name": "Bobby Fischer", 
                 "license": "123456789", 
@@ -345,8 +364,19 @@ def residentView():
     return render_template("resident.html", guests=guests, name=name, address=address, unit=unit, hasGuest=hasGuest)
 
 if __name__ == "__main__":
-    if not path.exists('parkings.db'):
-        with app.app_context():
+    
+    with app.app_context():
+        
+        if not path.exists('parkings.db'):
             db.create_all()
-        print("making db")
+            print("making db")
+        
+    #     # dummy data for users
+    #     user_1 = User(name='Bobby',email='th@th.com',password='password')
+    #     user_2 = User(name='Jason',email='grind@mind.com',password='password')
+    #     db.session.add(user_1)
+    #     db.session.add(user_2)
+    #     db.session.commit()
+    #     User.query.all()
+     
     app.run(debug=True)
