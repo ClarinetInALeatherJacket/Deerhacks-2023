@@ -32,29 +32,36 @@ class User(db.Model, UserMixin):
     # unit_number = db.Column(db.String(10), nullable=True)
     # building = db.Column(db.Integer, nullable=True)
     # manage_buildings = db.relationship('Building')
-    # bookings = db.relationship('Bookings', backref='author', lazy=True)
+    bookings = db.relationship('Booking', backref='author', lazy=True)
     
     def __repr__(self):
-        return f"User('{self.name}', '{self.email}', '{self.password}', '{self.id}')"
-
-    # def __init__(name: str, email: str, password: str, phonenumber: str,
-    #              license_plate: str, unit_number: str):
-    #     if id is not None:
+        return f"{self.name}, id: {self.id}" \
+               f"\nemail: {self.email}, password: {self.password}" \
+               f"\nbookings: {self.bookings}"
 
 class Building(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     address = db.Column(db.String(150), unique=True, nullable=False)
     # manager_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     description = db.Column(db.Text(1000), nullable=True)
-    bookings = db.relationship('Bookings')
+    bookings = db.relationship('Booking')
+    
+    def __repr__(self):
+        return f"{self.address}, id: {self.id}" \
+               f"\ndescription: {self.description})" \
+               f"\nbookings: {self.bookings}"
 
-class Bookings(db.Model):
+class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     building_id = db.Column(db.Integer, db.ForeignKey('building.id'), nullable=False)
     time = db.Column(db.DateTime, nullable=False, default=func.now())
     duration = db.Column(db.Integer, nullable=False)
     visitor_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     # resident_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    
+    def __repr__(self):
+        return f"{self.time}, duration: {self.duration}" \
+               f"id: {self.id}, visior: {self.visitor_id}, building: {self.building_id}"
 
 """ dummy data for buildings """
 buildings = [
